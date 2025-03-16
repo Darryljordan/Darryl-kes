@@ -1,0 +1,7 @@
+:host{
+    --ion-tab-bar-background: rgb(240, 237, 237);
+    ion-tab-button.tab-selected svg path{
+        fill: #c11fc4;
+        // stroke: #c11fc4;
+    }
+}

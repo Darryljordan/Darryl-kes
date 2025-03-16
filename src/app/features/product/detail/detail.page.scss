@@ -1,0 +1,22 @@
+ion-content{
+    ion-button{
+        --background: #fff;
+        --padding-start: 0.7em;
+        --padding-end: 0.7em;
+        --padding-top: 0.7em;
+        --padding-bottom: 0.7em;
+    }
+    ion-back-button{
+        --background: #fff;
+        --icon-font-weight: bold;
+    }
+}
+ion-footer{
+    ion-button{
+        --background: #3f3d3d;
+        --padding-start: 0.2em;
+        --padding-end: 0.2em;
+        --padding-top: 0.2em;
+        --padding-bottom: 0.2em;
+    }
+}

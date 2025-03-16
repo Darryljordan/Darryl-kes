@@ -1,0 +1,111 @@
+<ion-content [fullscreen]="true" class="flex flex-col justify-between h-screen">
+  <div class="h-[20%] flex items-center justify-center">
+    <h1 class="font-bold text-2xl text-center">Créer un compte</h1>
+  </div>
+
+  <div class="rounded-t-lg bg-gray-200 px-5 py-10 h-[80%]">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="flex flex-col space-y-5">
+      <ion-input
+        formControlName="fullName"
+        label="Nom complet"
+        labelPlacement="floating"
+        fill="outline"
+        type="text"
+        placeholder="John Doe"
+        [class.ion-invalid]="registrationForm.get('fullName')?.invalid && registrationForm.get('fullName')?.touched"
+        [class.ion-valid]="registrationForm.get('fullName')?.valid"
+        errorText="{{getErrorMessage('fullName')}}"
+      >
+      </ion-input>
+
+      <ion-input
+        formControlName="phone"
+        label="Numéro de téléphone"
+        labelPlacement="floating"
+        fill="outline"
+        type="tel"
+        placeholder="6XXXXXXXX"
+        [class.ion-invalid]="registrationForm.get('phone')?.invalid && registrationForm.get('phone')?.touched"
+        [class.ion-valid]="registrationForm.get('phone')?.valid"
+        errorText="{{getErrorMessage('phone')}}"
+      >
+      </ion-input>
+
+      <ion-input
+        formControlName="password"
+        label="Mot de passe"
+        labelPlacement="floating"
+        fill="outline"
+        type="password"
+        placeholder="••••••"
+        [class.ion-invalid]="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched"
+        [class.ion-valid]="registrationForm.get('password')?.valid"
+        errorText="{{getErrorMessage('password')}}"
+      >
+      </ion-input>
+
+      <ion-input
+        formControlName="confirmPassword"
+        label="Confirmer le mot de passe"
+        labelPlacement="floating"
+        fill="outline"
+        type="password"
+        placeholder="••••••"
+        [class.ion-invalid]="(registrationForm.get('confirmPassword')?.invalid || registrationForm.errors?.['passwordMismatch']) && registrationForm.get('confirmPassword')?.touched"
+        [class.ion-valid]="registrationForm.get('confirmPassword')?.valid && !registrationForm.errors?.['passwordMismatch']"
+        errorText="{{getErrorMessage('confirmPassword')}}"
+      >
+      </ion-input>
+
+      <div class="flex items-start space-x-2">
+        <ion-checkbox 
+          formControlName="acceptTerms"
+          [class.ion-invalid]="registrationForm.get('acceptTerms')?.invalid && registrationForm.get('acceptTerms')?.touched"
+        ></ion-checkbox>
+        <span class="text-sm">
+          J'accepte les <a href="#" class="text-primary">conditions d'utilisation</a> et la 
+          <a href="#" class="text-primary">politique de confidentialité</a>
+        </span>
+      </div>
+
+      <ion-button type="submit" [disabled]="registrationForm.invalid || isLoading" expand="block">
+        <span *ngIf="!isLoading">S'inscrire</span>
+        <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+      </ion-button>
+
+      <div class="text-center text-sm">
+        Déjà un compte ? 
+        <ion-button fill="clear" routerLink="/auth/login">Se connecter</ion-button>
+      </div>
+    </form>
+
+    <fieldset class="border-t-2 border-gray-50 my-5">
+      <legend class="text-center px-3">Ou avec</legend>
+    </fieldset>
+
+    <div class="grid grid-cols-2 gap-5 place-items-center">
+      <ion-button fill="outline" (click)="registerWithGoogle()" class="w-full">
+        <svg slot="start" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24">
+          <path fill="#e33629" d="M12 5a7 7 0 1 0 6.93 8H13a1 1 0 1 1 0-2h7a1 1 0 0 1 1 1a9 9 0 1 1-2.654-6.381a1 1 0 0 1-1.41 1.418A6.98 6.98 0 0 0 12 5"/>
+        </svg>
+        Google
+      </ion-button>
+
+      <ion-button fill="outline" (click)="registerWithFacebook()" class="w-full">
+        <svg slot="start" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24">
+          <path fill="#1877f2" d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4z"/>
+        </svg>
+        Facebook
+      </ion-button>
+    </div>
+  </div>
+
+  <ion-toast
+    [isOpen]="showToast"
+    [message]="errorMessage"
+    [duration]="3000"
+    position="top"
+    color="danger"
+    (didDismiss)="showToast = false"
+  ></ion-toast>
+</ion-content>

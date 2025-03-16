@@ -1,0 +1,78 @@
+<ion-content [fullscreen]="true" class="flex flex-col justify-between h-screen">
+  <div class="h-[20%] flex items-center justify-center">
+    <h1 class="font-bold text-2xl text-center">Se connecter</h1>
+  </div>
+  <div class="rounded-t-lg bg-gray-200 px-5 py-10 h-[80%]">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-col space-y-5">
+      <ion-input
+        formControlName="phone"
+        label="Numéro de téléphone"
+        labelPlacement="floating"
+        fill="outline"
+        type="tel"
+        placeholder="6XXXXXXXX"
+        [class.ion-invalid]="loginForm.get('phone')?.invalid && loginForm.get('phone')?.touched"
+        [class.ion-valid]="loginForm.get('phone')?.valid"
+        errorText="{{getErrorMessage('phone')}}"
+      >
+      </ion-input>
+
+      <ion-input
+        formControlName="password"
+        label="Mot de passe"
+        labelPlacement="floating"
+        fill="outline"
+        type="password"
+        placeholder="••••••"
+        [class.ion-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+        [class.ion-valid]="loginForm.get('password')?.valid"
+        errorText="{{getErrorMessage('password')}}"
+      >
+      </ion-input>
+
+      <div class="flex items-center justify-between text-sm">
+        <ion-checkbox formControlName="rememberMe" labelPlacement="end">Se rappeler de moi</ion-checkbox>
+        <ion-button fill="clear" routerLink="/auth/reset-password">Mot de passe oublié ?</ion-button>
+      </div>
+
+      <ion-button type="submit" [disabled]="loginForm.invalid || isLoading">
+        <span *ngIf="!isLoading">Se connecter</span>
+        <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+      </ion-button>
+
+      <div class="text-center text-sm">
+        Pas encore de compte ? 
+        <ion-button fill="clear" routerLink="/auth/register">S'inscrire</ion-button>
+      </div>
+    </form>
+
+    <fieldset class="border-t-2 border-gray-50 my-5">
+      <legend class="text-center px-3">Ou avec</legend>
+    </fieldset>
+
+    <div class="grid grid-cols-2 gap-5 place-items-center">
+      <ion-button fill="outline" (click)="loginWithGoogle()" class="w-full">
+        <svg slot="start" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24">
+          <path fill="#e33629" d="M12 5a7 7 0 1 0 6.93 8H13a1 1 0 1 1 0-2h7a1 1 0 0 1 1 1a9 9 0 1 1-2.654-6.381a1 1 0 0 1-1.41 1.418A6.98 6.98 0 0 0 12 5"/>
+        </svg>
+        Google
+      </ion-button>
+
+      <ion-button fill="outline" (click)="loginWithFacebook()" class="w-full">
+        <svg slot="start" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24">
+          <path fill="#1877f2" d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4z"/>
+        </svg>
+        Facebook
+      </ion-button>
+    </div>
+  </div>
+
+  <ion-toast
+    [isOpen]="showToast"
+    [message]="errorMessage"
+    [duration]="3000"
+    position="top"
+    color="danger"
+    (didDismiss)="showToast = false"
+  ></ion-toast>
+</ion-content>

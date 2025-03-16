@@ -1,0 +1,26 @@
+:host{
+    ion-header.scrolled {
+      transition: background-color 0.3s;
+    }
+    ion-header{
+      ion-item{
+        --background: transparent;
+      }
+    }
+    ion-searchbar.custom {
+        --background: transparent;
+        --color: #000;
+        --placeholder-color: #000;
+        --icon-color: #000;
+        --box-shadow: none;
+        --border-radius: 4px;
+      }
+      
+      ion-searchbar.ios.custom {
+        --cancel-button-color: #19422d;
+      }
+      
+      ion-searchbar.md.custom {
+        --cancel-button-color: #fff;
+      }
+}

@@ -1,0 +1,26 @@
+<div class="border-b pb-1" [routerLink]="['/order', 1]">
+  <div class="flex items-center justify-between w-full">
+    <h3 class="">20, nov 2024</h3>
+    <p class="" *ngIf="showStatus">status</p>
+  </div>
+  <div class="flex space-x-3 items-center mt-2">
+    <div class="h-16 w-16 bg-red-300">
+      <img src="assets/images/food-5.jpg" alt="" class="object-cover h-full w-full rounded-xl">
+    </div>
+    <div class="flex justify-between items-start w-full">
+      <div class="space-y-2">
+        <div class="font-semibold">Establissement</div>
+        <div class="flex space-x-3 items-center">
+          <span class="font-semibold">6000 Fcfa</span>
+          <hr class="h-3 w-px bg-gray-500">
+          <ion-text class="text-gray-500">03 items</ion-text>
+        </div>
+      </div>
+      <div class="text-xs font-semibold">#258963</div>
+    </div>
+  </div>
+  <div class="grid grid-cols-2 gap-10 mt-3">
+    <ion-button size="small" class="" fill="outline">Track</ion-button>
+    <ion-button size="small" class="">Cancel</ion-button>
+  </div>
+</div>

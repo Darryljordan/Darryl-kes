@@ -1,0 +1,17 @@
+<form
+  class="grid grid-cols-1 gap-5"
+  [formGroup]="form" 
+  (ngSubmit)="onSubmit()"
+>
+  <div *ngFor="let field of fields">
+    <ion-label>{{field.label}}</ion-label>
+    <ion-input fill="outline" [type]="field.type" [formControlName]="field.name" [placeholder]="field.placeholder"></ion-input>
+    <ion-text class="text-xs" *ngIf="form.controls[field.name].errors?.['required'] && form.controls[field.name].touched" color="danger">
+      {{ field.errorMessages?.['required'] }}
+    </ion-text>
+    <ion-text class="text-xs" *ngIf="form.controls[field.name].errors?.['min'] && form.controls[field.name].touched" color="danger">
+      {{ field.errorMessages?.['min'] }}
+    </ion-text>
+  </div>
+  <ion-button expand="full" type="submit" [disabled]="form.invalid">Submit</ion-button>
+</form>

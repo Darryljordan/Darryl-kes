@@ -1,0 +1,49 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    min-height: 100vh;
+  }
+  
+  .text-node { 
+    background-clip: text !important; 
+    -webkit-background-clip: text !important; 
+  }
+
+  :host ion-content {
+    --background: #031A2C !important; /* Correct way to set ion-content background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Splash Screen */
+  .logo-page {
+    width: 100vw;
+    height: 100vh;
+    background: #031A2C !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Logo Image */
+  .screenshot {
+    width: 500px;
+    height: 500px;
+    background: url(../../../assets/images/logo.png) no-repeat center center / cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+

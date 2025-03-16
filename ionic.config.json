@@ -1,0 +1,7 @@
+{
+  "name": "kes",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
