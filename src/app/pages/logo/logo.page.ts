@@ -19,8 +19,8 @@ export class LogoPage implements OnInit {
   ngOnInit() {
     console.log('LogoPage initialized');
     setTimeout(() => {
-      console.log('Redirecting to login page');
-      this.router.navigateByUrl('/auth/login', { replaceUrl: true });
+      console.log('Redirecting to Onboarding Page');
+      this.router.navigateByUrl('/pages/onboarding-page1', { replaceUrl: true });
     }, 5000);
   }
 }

@@ -45,6 +45,22 @@ export const routes: Routes = [
     path: 'pages/logo',
     loadComponent: () => import('./pages/logo/logo.page').then( m => m.LogoPage)
   },
+  {
+    path: 'pages/onboarding-page1',
+    loadComponent: () => import('./pages/onboarding-page1/onboarding-page1.page').then( m => m.OnboardingPage1Page)
+  },
+  {
+    path: 'onboarding-page2',
+    loadComponent: () => import('./pages/onboarding-page2/onboarding-page2.page').then( m => m.OnboardingPage2Page)
+  },
+  {
+    path: 'onboarding-page3',
+    loadComponent: () => import('./pages/onboarding-page3/onboarding-page3.page').then( m => m.OnboardingPage3Page)
+  },
+  {
+    path: 'onboarding-page4',
+    loadComponent: () => import('./pages/onboarding-page4/onboarding-page4.page').then( m => m.OnboardingPage4Page)
+  },
 ];
 
 @NgModule({
